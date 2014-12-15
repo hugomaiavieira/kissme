@@ -100,4 +100,4 @@ O cenário é uma sala de aula, apenas carteiras
 
 ### Fase extra (viagens)
 
-Se der tempo e não for fazer o jogo ficar muito longo, seria interessante fazer uma faze em que o tema seria viagens que fizemos para Búzios, Paty de Alferes, Petropolis e Aruba.
+Se der tempo e não for fazer o jogo ficar muito longo, seria interessante fazer uma fase em que o tema seria viagens que fizemos para Búzios, Paty de Alferes, Petropolis e Aruba.

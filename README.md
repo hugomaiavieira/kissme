@@ -18,6 +18,8 @@ Ao completar a barra de conquista, aparece a frase "Quer casar comigo?" e dois b
 
 Caso do personagem ser atingido pelo inimigo, parece a frase "Tente novamente, não desista do amor da sua vida" e a fase é reiniciada.
 
+O jogo será no estilo [flappy bird](https://www.youtube.com/watch?v=YHH2101OFfI) no sentido de movimentação da cena e do personagem. Contudo seria para desviar de inimigos aleatórios na cena que vem em sua direção.
+
 ## Fases
 
 ### Como nos conhecemos
@@ -93,3 +95,9 @@ O cenário é uma sala de aula, apenas carteiras
 #### Inimigos
 
 - livros
+
+---
+
+### Fase extra (viagens)
+
+Se der tempo e não for fazer o jogo ficar muito longo, seria interessante fazer uma faze em que o tema seria viagens que fizemos para Búzios, Paty de Alferes, Petropolis e Aruba.

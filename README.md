@@ -101,3 +101,16 @@ O cenário é uma sala de aula, apenas carteiras
 ### Fase extra (viagens)
 
 Se der tempo e não for fazer o jogo ficar muito longo, seria interessante fazer uma fase em que o tema seria viagens que fizemos para Búzios, Paty de Alferes, Petropolis e Aruba.
+
+---
+
+## Desenvolvimento
+
+O jogo tem várias [câmeras](http://unity3d.com/learn/tutorials/modules/beginner/graphics/cameras):
+
+  - Animação: exibe as animações iniciais e finais de cada level
+  - Dinâmica: exibe os objetos dinâmicos, como Player e Inimigos
+  - Estática: exibe os objetos estáticos como Backgound e Floor
+  - Principal: exibe tudo
+
+As câmeras são controladas via script. A Estática sempre será exibida, enquanto a dinâmica aparece apenas quando a de animação não está ativa, e vice-versa.

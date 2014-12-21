@@ -10,6 +10,6 @@ public class EnemyBehaviourScript : MonoBehaviour {
 	}
 
 	void Update () {
-		// move in the direction of player;
+		// move in player's direction
 	}
 }

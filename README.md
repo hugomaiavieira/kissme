@@ -96,11 +96,9 @@ O cenário é uma sala de aula, apenas carteiras
 
 - livros
 
----
+### Finalização
 
-### Fase extra (viagens)
-
-Se der tempo e não for fazer o jogo ficar muito longo, seria interessante fazer uma fase em que o tema seria viagens que fizemos para Búzios, Paty de Alferes, Petropolis e Aruba.
+Após a última fase, vai entrar a animação de um avião saindo do Brasil e pousando em Aruba. Ai vai mostrar no quarto do hotel a cena que estará acontecendo no momento, Hugo em pé ao lado de Alice que vai estar sentada jogando no celular. Vai dar um zoom na tela do celular e, que vai virar a tela do Jogo com a pergunta "Quer casar comigo?" e dois botões, ambos bom a palavra "Sim", não dando opção para dizer não! =)
 
 ---
 

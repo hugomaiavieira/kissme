@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerBehaviourScript : MonoBehaviour {
+public class PlayerBehaviour : MonoBehaviour {
 
 	public float flyForce;
 

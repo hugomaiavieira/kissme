@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyBehaviourScript : MonoBehaviour {
+public class EnemyBehaviour : MonoBehaviour {
 
 	public float speed;
 	Vector3	direction = new Vector3(-1, 0 , 0);

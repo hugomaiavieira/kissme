@@ -4,32 +4,21 @@ using System.Collections;
 public class PlayerBehaviour : MonoBehaviour {
 
 	public float flyForce;
-
-	GameObject animationCamera;
-	GameObject dynamicCamera;
-	Animator animator;
+	
+	Animator       animator;
+	GameController gameController;
 
 	void Start () {
-		// This camera things must be on GameController
-		animationCamera = GameObject.FindWithTag("AnimationCamera");
-		dynamicCamera   = GameObject.FindWithTag("DynamicCamera");
-		animator 		= GetComponent<Animator>();
+		animator       = GetComponent<Animator>();
+		gameController = FindObjectOfType(typeof(GameController)) as GameController;
 	}
 
 	void Update () {
+		KeepMaxHeight();
+		DieWhenFall();
+
 		if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
 			Fly();
-
-		// This camera things must be on GameController
-		if(Input.GetKeyDown(KeyCode.D)) {
-			animationCamera.SetActive(false);
-			dynamicCamera.SetActive(true);
-		}
-
-		if(Input.GetKeyDown(KeyCode.A)) {
-			animationCamera.SetActive(true);
-			dynamicCamera.SetActive(false);
-		}
 			
 	}
 
@@ -39,5 +28,23 @@ public class PlayerBehaviour : MonoBehaviour {
 
 		animator.SetTrigger("MakeFly");
 		rigidbody2D.AddForce(new Vector2(0, 1) * flyForce);
+	}
+
+	private void KeepMaxHeight() {
+		Vector3 actualPosition = transform.position;
+		if (actualPosition.y > 4.7f) {
+			actualPosition.y = 4.7f;
+			transform.position = actualPosition;
+		}
+	}
+
+	private void DieWhenFall() {
+		if (transform.position.y < -5.35f) {
+			gameController.CallGameOver();
+		} 
+	}
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		gameController.CallGameOver();
 	}
 }

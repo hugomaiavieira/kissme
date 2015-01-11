@@ -16,15 +16,31 @@ public class GameController : MonoBehaviour {
 	public PlayerBehaviour player;
 	public List<GameObject> enemies;
 
-	GameState currentState = GameState.START;
+	GameObject animationCamera;
+	GameObject dynamicCamera;
+	GameState  currentState = GameState.START;
 	
 	// Use this for initialization
 	void Start () {
 		// player.SetStartPosition();
+		animationCamera = GameObject.FindWithTag("AnimationCamera");
+		dynamicCamera   = GameObject.FindWithTag("DynamicCamera");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		// This camera things must be on GameController
+		if(Input.GetKeyDown(KeyCode.D)) {
+			animationCamera.SetActive(false);
+			dynamicCamera.SetActive(true);
+		}
+		
+		if(Input.GetKeyDown(KeyCode.A)) {
+			animationCamera.SetActive(true);
+			dynamicCamera.SetActive(false);
+		}
+
+
 		switch(currentState) {
 
 			case GameState.START: {

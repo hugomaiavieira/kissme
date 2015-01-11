@@ -112,3 +112,45 @@ O jogo tem várias [câmeras](http://unity3d.com/learn/tutorials/modules/beginne
   - Principal: exibe tudo
 
 As câmeras são controladas via script. A Estática sempre será exibida, enquanto a dinâmica aparece apenas quando a de animação não está ativa, e vice-versa.
+
+### Movimentar o offset de backgrounds
+
+Adicionar a imagem dentro da pasta Textures com os seguitnes parâmtros:
+
+  - Texture type: Texture
+  - Wrap Mode: Repeat
+  - Format: Truecolor
+
+Dentro da pasta Material, criar um material com o shader Unlit/Texture e selecionar também a textura criada no passo anterior.
+
+No GameObject, adicionar os componentes:
+
+  - Mesh -> Mesh Filter do tipo Quad.
+  - Mesh -> Mesh Render, colocando como material, o Material criado anteriormente
+
+O GameObject também terá que ter um componente script com o script MoveOffset abaixo:
+
+
+    using UnityEngine;
+    using System.Collections;
+    
+    public class MoveOffset : MonoBehaviour {
+        
+        public float speed;
+        Material currentMaterial;
+        float offset;
+        
+        void Start () {
+            currentMaterial = renderer.material;
+        }
+        
+        void Update () {
+            
+            offset += 0.001f;
+            
+            currentMaterial.SetTextureOffset("_MainTex", new Vector2(offset*speed, 0));
+            
+        }
+    }
+
+Ai basta setar o valor da variável speed.

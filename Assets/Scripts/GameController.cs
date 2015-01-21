@@ -13,16 +13,17 @@ public enum GameState {
 
 public class GameController : MonoBehaviour {
 	
-	public PlayerBehaviour player;
+	public PlayerBehaviour  player;
 	public List<GameObject> enemies;
 
+	int        score;
 	GameObject animationCamera;
 	GameObject dynamicCamera;
 	GameState  currentState = GameState.START;
 	
 	// Use this for initialization
 	void Start () {
-		// player.SetStartPosition();
+		score           = 0;
 		animationCamera = GameObject.FindWithTag("AnimationCamera");
 		dynamicCamera   = GameObject.FindWithTag("DynamicCamera");
 	}
@@ -39,6 +40,9 @@ public class GameController : MonoBehaviour {
 			animationCamera.SetActive(true);
 			dynamicCamera.SetActive(false);
 		}
+
+		if(score == 10)
+			StartFinalAnimation();
 
 
 		switch(currentState) {
@@ -74,11 +78,18 @@ public class GameController : MonoBehaviour {
 	public void CallGameOver() {
 		currentState = GameState.GAMEOVER;
 	}
+
+	public void StartFinalAnimation() {
+		Debug.Log("Start final animation");
+	}
 	
 	public void RestartGame() {
-		// player.Restart();
 		foreach(GameObject enemy in enemies) {
 			enemy.SetActive(false);
 		}
+	}
+
+	public void AddScore() {
+		score++;
 	}
 }

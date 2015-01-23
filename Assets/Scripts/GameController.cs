@@ -25,20 +25,18 @@ public class GameController : MonoBehaviour {
 		score           = 0;
 		animationCamera = GameObject.FindWithTag("AnimationCamera");
 		dynamicCamera   = GameObject.FindWithTag("DynamicCamera");
+
+		// I don't know why I have to set active "false" and then "true" 
+		// to really active the camera. If I only set to "true" it does not
+		// become active.
+		animationCamera.SetActive(false);
+		animationCamera.SetActive(true);
+
+		dynamicCamera.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// This camera things must be on GameController
-		if(Input.GetKeyDown(KeyCode.D)) {
-			animationCamera.SetActive(false);
-			dynamicCamera.SetActive(true);
-		}
-		
-		if(Input.GetKeyDown(KeyCode.A)) {
-			animationCamera.SetActive(true);
-			dynamicCamera.SetActive(false);
-		}
 
 		if(score == 10)
 			StartFinalAnimation();
@@ -47,9 +45,8 @@ public class GameController : MonoBehaviour {
 		switch(currentState) {
 
 			case GameState.WAITGAME: {
-				if(flyAction()) {
-					currentState = GameState.INGAME;	
-				}
+				if(TouchEvent())
+					currentState = GameState.INITIALANIMATION;
 			}
 			break;
 
@@ -75,6 +72,8 @@ public class GameController : MonoBehaviour {
 	
 	public void StartGame() {
 		currentState = GameState.INGAME;
+		dynamicCamera.SetActive(true);
+		player.Wakeup();
 	}
 	
 	public bool IsInGame() {
@@ -83,6 +82,10 @@ public class GameController : MonoBehaviour {
 
 	public bool IsWaitingGame() {
 		return currentState == GameState.WAITGAME;
+	}
+
+	public bool IsInitialAnimation() {
+		return currentState == GameState.INITIALANIMATION;
 	}
 	
 	public void CallGameOver() {
@@ -103,7 +106,7 @@ public class GameController : MonoBehaviour {
 		score++;
 	}
 
-	public bool flyAction() {
+	public bool TouchEvent() {
 		return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
 	}
 }

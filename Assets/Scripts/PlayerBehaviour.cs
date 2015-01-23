@@ -22,25 +22,20 @@ public class PlayerBehaviour : MonoBehaviour {
 		DieWhenFall();
 		moveToStartPosition();
 
-		if(gameController.flyAction()) {
-			if(gameController.IsWaitingGame())
-				Wakeup();
-
-			if(gameController.IsInGame())
-				Fly();
-		}
+		if(gameController.TouchEvent() && gameController.IsInGame())
+			Fly();
 	}
 
+	public void Wakeup() {
+		rigidbody2D.gravityScale = 1;
+		isAwake = true;
+		Fly();
+	}
+	
 	private void moveToStartPosition() {
 		if (isAwake && transform.position.x > -1f) {
 			transform.Translate(speed * direction * Time.deltaTime);
 		}
-	}
-
-	private void Wakeup() {
-		rigidbody2D.gravityScale = 1;
-		Fly();
-		isAwake = true;
 	}
 
 	private void Fly() {

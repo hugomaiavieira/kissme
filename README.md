@@ -154,3 +154,7 @@ O GameObject também terá que ter um componente script com o script MoveOffset 
     }
 
 Ai basta setar o valor da variável speed.
+
+### Animações e eventos
+
+- http://www.raywenderlich.com/66523/unity-2d-tutorial-animation-controllers

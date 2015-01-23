@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public enum GameState {
-	START,
 	WAITGAME,
 	INGAME,
 	INITIALANIMATION,
@@ -19,7 +18,7 @@ public class GameController : MonoBehaviour {
 	int        score;
 	GameObject animationCamera;
 	GameObject dynamicCamera;
-	GameState  currentState = GameState.START;
+	GameState  currentState = GameState.WAITGAME;
 	
 	// Use this for initialization
 	void Start () {
@@ -47,11 +46,18 @@ public class GameController : MonoBehaviour {
 
 		switch(currentState) {
 
-			case GameState.START: {
+			case GameState.WAITGAME: {
+				if(flyAction()) {
+					currentState = GameState.INGAME;	
+				}
 			}
 			break;
 
-			case GameState.WAITGAME: {
+			case GameState.INITIALANIMATION: {
+			}
+			break;
+
+			case GameState.FINALIALANIMATION: {
 			}
 			break;
 
@@ -74,6 +80,10 @@ public class GameController : MonoBehaviour {
 	public bool IsInGame() {
 		return currentState == GameState.INGAME;
 	}
+
+	public bool IsWaitingGame() {
+		return currentState == GameState.WAITGAME;
+	}
 	
 	public void CallGameOver() {
 		currentState = GameState.GAMEOVER;
@@ -91,5 +101,9 @@ public class GameController : MonoBehaviour {
 
 	public void AddScore() {
 		score++;
+	}
+
+	public bool flyAction() {
+		return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
 	}
 }

@@ -6,11 +6,12 @@ public class SpawnController : MonoBehaviour {
 	public float minHeight;
 	public float maxHeight;
 	public float rate;
-	private float currentRate;
-	private GameController gameController;
 	
 	public GameObject prefab;
 	public int maxObjects;
+
+	float currentRate;
+	GameController gameController;
 	
 	// Use this for initialization
 	void Start () {
@@ -26,8 +27,8 @@ public class SpawnController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// if(!gameController.IsInGame())
-		//	return;
+		if(gameController.IsWaitingGame())
+			return;
 		
 		currentRate	+= Time.deltaTime;
 		if(currentRate > rate) {

@@ -7,19 +7,40 @@ public class PlayerBehaviour : MonoBehaviour {
 	
 	Animator       animator;
 	GameController gameController;
+	bool 		   isAwake   = false;
+	Vector3 	   direction = new Vector3(-1, 0 , 0);
+	float          speed	 = 1f;
 
 	void Start () {
 		animator       = GetComponent<Animator>();
 		gameController = FindObjectOfType(typeof(GameController)) as GameController;
+		rigidbody2D.gravityScale = 0;
 	}
 
 	void Update () {
 		KeepMaxHeight();
 		DieWhenFall();
+		moveToStartPosition();
 
-		if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-			Fly();
-			
+		if(gameController.flyAction()) {
+			if(gameController.IsWaitingGame())
+				Wakeup();
+
+			if(gameController.IsInGame())
+				Fly();
+		}
+	}
+
+	private void moveToStartPosition() {
+		if (isAwake && transform.position.x > -1f) {
+			transform.Translate(speed * direction * Time.deltaTime);
+		}
+	}
+
+	private void Wakeup() {
+		rigidbody2D.gravityScale = 1;
+		Fly();
+		isAwake = true;
 	}
 
 	private void Fly() {

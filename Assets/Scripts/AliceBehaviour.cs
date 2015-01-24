@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AliceKissingAnimationBehaviour : MonoBehaviour {
+public class AliceBehaviour : MonoBehaviour {
 
 	GameController gameController;
 	Animator       animator;

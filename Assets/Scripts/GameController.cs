@@ -6,6 +6,7 @@ public enum GameState {
 	WAITGAME,
 	INGAME,
 	INITIALANIMATION,
+	WINSTATE,
 	FINALIALANIMATION,
 	GAMEOVER
 }
@@ -13,33 +14,26 @@ public enum GameState {
 public class GameController : MonoBehaviour {
 	
 	public PlayerBehaviour  player;
+	public HugoBehaviour	hugo;
 	public List<GameObject> enemies;
 
 	int        score;
-	GameObject animationCamera;
-	GameObject dynamicCamera;
+	//GameObject animationCamera;
+	//GameObject dynamicCamera;
 	GameState  currentState = GameState.WAITGAME;
 	
 	// Use this for initialization
 	void Start () {
 		score           = 0;
-		animationCamera = GameObject.FindWithTag("AnimationCamera");
-		dynamicCamera   = GameObject.FindWithTag("DynamicCamera");
-
-		// I don't know why I have to set active "false" and then "true" 
-		// to really active the camera. If I only set to "true" it does not
-		// become active.
-		animationCamera.SetActive(false);
-		animationCamera.SetActive(true);
-
-		dynamicCamera.SetActive(false);
+		//animationCamera = GameObject.FindWithTag("AnimationCamera");
+		//dynamicCamera   = GameObject.FindWithTag("DynamicCamera");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(score == 10)
-			StartFinalAnimation();
+		if(score == 5)
+			StartWin();
 
 
 		switch(currentState) {
@@ -63,7 +57,6 @@ public class GameController : MonoBehaviour {
 			break;
 
 			case GameState.GAMEOVER: {
-				RestartGame();
 			}
 			break;
 
@@ -72,7 +65,6 @@ public class GameController : MonoBehaviour {
 	
 	public void StartGame() {
 		currentState = GameState.INGAME;
-		dynamicCamera.SetActive(true);
 		player.Wakeup();
 	}
 	
@@ -87,16 +79,33 @@ public class GameController : MonoBehaviour {
 	public bool IsInitialAnimation() {
 		return currentState == GameState.INITIALANIMATION;
 	}
+
+	public bool IsWinState() {
+		return currentState == GameState.WINSTATE;
+	}
+
+	public bool IsFinalAnimation() {
+		return currentState == GameState.FINALIALANIMATION;
+	}
 	
 	public void CallGameOver() {
 		currentState = GameState.GAMEOVER;
 	}
 
+	public void StartWin() {
+		currentState = GameState.WINSTATE;
+		hugo.Activate();
+		InactiveAllEnemies();
+	}
+
 	public void StartFinalAnimation() {
-		Debug.Log("Start final animation");
+		currentState = GameState.FINALIALANIMATION;
+		// stop the backbround movement
+		// inactive the player
+		// trigger the Hugo animation
 	}
 	
-	public void RestartGame() {
+	public void InactiveAllEnemies() {
 		foreach(GameObject enemy in enemies) {
 			enemy.SetActive(false);
 		}

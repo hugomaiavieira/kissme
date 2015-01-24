@@ -5,16 +5,19 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	public float flyForce;
 	
-	Animator       animator;
-	GameController gameController;
-	bool 		   isAwake   = false;
-	Vector3 	   direction = new Vector3(-1, 0 , 0);
-	float          speed	 = 1f;
+	Animator       	animator;
+	GameController 	gameController;
+	bool 		   	isAwake   		= false;
+	Vector3 	   	direction		= new Vector3(-1, 0 , 0);
+	float          	backSpeed 		= 0.7f;
+	float          	goToHugoSpeed	= 0.2f;
+	float 		   	lastFlyghtTime	= 0;
+	Vector3			hugoDirection 	= new Vector3 (3, -1, 0);
 
 	void Start () {
 		animator       = GetComponent<Animator>();
 		gameController = FindObjectOfType(typeof(GameController)) as GameController;
-		rigidbody2D.gravityScale = 0;
+		Sleep();
 	}
 
 	void Update () {
@@ -24,17 +27,43 @@ public class PlayerBehaviour : MonoBehaviour {
 
 		if(gameController.TouchEvent() && gameController.IsInGame())
 			Fly();
+
+		if(gameController.IsWinState())
+			GoToHugo();
 	}
 
 	public void Wakeup() {
+		gameObject.SetActive(true);
 		rigidbody2D.gravityScale = 1;
 		isAwake = true;
 		Fly();
 	}
-	
+
+	public void Sleep() {
+		rigidbody2D.gravityScale = 0;
+		gameObject.SetActive(false);
+		isAwake = false;
+	}
+
+	public void GoToHugo() {
+		rigidbody2D.gravityScale = 0;
+		rigidbody2D.velocity = Vector2.zero;
+
+		// Get the normalized (unitary) direction vector from the Player to Hugo
+		direction = (hugoDirection - transform.position).normalized;
+		
+		transform.Translate(goToHugoSpeed * direction * Time.deltaTime);
+
+		lastFlyghtTime	+= Time.deltaTime;
+		if(lastFlyghtTime > 0.5f) {
+			lastFlyghtTime = 0;
+			animator.SetTrigger("MakeFly");
+		}
+	}
+
 	private void moveToStartPosition() {
-		if (isAwake && transform.position.x > -1f) {
-			transform.Translate(speed * direction * Time.deltaTime);
+		if (isAwake && transform.position.x > -1.5f) {
+			transform.Translate(backSpeed * direction * Time.deltaTime);
 		}
 	}
 
@@ -61,6 +90,12 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		gameController.CallGameOver();
+		// ver se bateu em Hugo ou em um inimigo
+		//if (enemy) 
+		//	gameController.CallGameOver();
+		if (coll.collider.name == "Hugo") {
+			gameObject.SetActive(false);
+		}
+			//gameController.StartFinalAnimation();
 	}
 }

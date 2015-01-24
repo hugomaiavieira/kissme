@@ -15,12 +15,13 @@ public class GameController : MonoBehaviour {
 	
 	public PlayerBehaviour  player;
 	public HugoBehaviour	hugo;
+	public Texture2D		finalImage;
 	public List<GameObject> enemies;
 
 	int        score;
 	//GameObject animationCamera;
 	//GameObject dynamicCamera;
-	GameState  currentState = GameState.WAITGAME;
+	public GameState  currentState = GameState.WAITGAME;
 	
 	// Use this for initialization
 	void Start () {
@@ -32,7 +33,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(score == 3)
+		if(score == 1)
 			StartWin();
 
 		switch(currentState) {
@@ -114,6 +115,10 @@ public class GameController : MonoBehaviour {
 
 	public void StartFinalAnimation() {
 		currentState = GameState.FINALIALANIMATION;
+
+		Fading fading = GetComponent<Fading>();
+		fading.fadeOutTexture = finalImage;
+		float fadeTime = fading.BeginFade(1);
 	}
 	
 	public void InactiveInvisibleEnemies() {

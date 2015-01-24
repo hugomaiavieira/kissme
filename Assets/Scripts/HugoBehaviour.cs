@@ -37,4 +37,8 @@ public class HugoBehaviour : MonoBehaviour {
 		gameObject.SetActive(true);
 	}
 
+	// After finish the initial animation, the game must start
+	public void AfterFinishAnimation() {
+		gameController.StartFinalAnimation();
+	}
 }

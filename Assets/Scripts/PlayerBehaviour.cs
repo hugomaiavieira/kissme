@@ -25,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour {
 		moveToStartPosition();
 
 		if(gameController.TouchEvent()) {
+			Debug.Log(gameController.currentState);
 			if (gameController.IsInGame())
 				Fly();
 			else if(gameController.IsWinState())
@@ -61,7 +62,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	public void FlyToHugo() {
 		// Get the normalized (unitary) direction vector from the Player to Hugo
 		direction = (hugoDirection - transform.position).normalized;
-		transform.Translate(goToHugoSpeed * direction * Time.deltaTime);
+		transform.Translate(goToHugoSpeed * direction);
 		Fly();
 	}
 

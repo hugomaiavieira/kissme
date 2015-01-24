@@ -27,7 +27,7 @@ public class SpawnController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(gameController.IsWaitingGame())
+		if(!gameController.IsInGame())
 			return;
 		
 		currentRate	+= Time.deltaTime;

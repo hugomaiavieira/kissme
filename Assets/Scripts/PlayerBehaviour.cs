@@ -3,15 +3,14 @@ using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-	public float flyForce;
+	int 			flyForce 		= 200;
 	
 	Animator       	animator;
 	GameController 	gameController;
 	bool 		   	isAwake   		= false;
 	Vector3 	   	direction		= new Vector3(-1, 0 , 0);
 	float          	backSpeed 		= 0.7f;
-	float          	goToHugoSpeed	= 0.2f;
-	float 		   	lastFlyghtTime	= 0;
+	float          	goToHugoSpeed	= 0.03f;
 	Vector3			hugoDirection 	= new Vector3 (3, -1, 0);
 
 	void Start () {
@@ -21,15 +20,16 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 
 	void Update () {
-		KeepMaxHeight();
+		KeepOnBoundaries();
 		DieWhenFall();
 		moveToStartPosition();
 
-		if(gameController.TouchEvent() && gameController.IsInGame())
-			Fly();
-
-		if(gameController.IsWinState())
-			GoToHugo();
+		if(gameController.TouchEvent()) {
+			if (gameController.IsInGame())
+				Fly();
+			else if(gameController.IsWinState())
+				FlyToHugo();
+		}
 	}
 
 	public void Wakeup() {
@@ -45,40 +45,36 @@ public class PlayerBehaviour : MonoBehaviour {
 		isAwake = false;
 	}
 
-	public void GoToHugo() {
-		rigidbody2D.gravityScale = 0;
-		rigidbody2D.velocity = Vector2.zero;
-
-		// Get the normalized (unitary) direction vector from the Player to Hugo
-		direction = (hugoDirection - transform.position).normalized;
-		
-		transform.Translate(goToHugoSpeed * direction * Time.deltaTime);
-
-		lastFlyghtTime	+= Time.deltaTime;
-		if(lastFlyghtTime > 0.5f) {
-			lastFlyghtTime = 0;
-			animator.SetTrigger("MakeFly");
-		}
-	}
-
 	private void moveToStartPosition() {
-		if (isAwake && transform.position.x > -1.5f) {
+		if (isAwake && transform.position.x > -2f)
 			transform.Translate(backSpeed * direction * Time.deltaTime);
-		}
 	}
 
 	private void Fly() {
 		// this makes the Player not to gain velocity when flying or falling
 		rigidbody2D.velocity = Vector2.zero;
-
+		
 		animator.SetTrigger("MakeFly");
 		rigidbody2D.AddForce(new Vector2(0, 1) * flyForce);
 	}
 
-	private void KeepMaxHeight() {
+	public void FlyToHugo() {
+		// Get the normalized (unitary) direction vector from the Player to Hugo
+		direction = (hugoDirection - transform.position).normalized;
+		transform.Translate(goToHugoSpeed * direction * Time.deltaTime);
+		Fly();
+	}
+
+	private void KeepOnBoundaries() {
 		Vector3 actualPosition = transform.position;
+
 		if (actualPosition.y > 4.7f) {
 			actualPosition.y = 4.7f;
+			transform.position = actualPosition;
+		}
+
+		if (actualPosition.x > 1.75f) {
+			actualPosition.x = 1.75f;
 			transform.position = actualPosition;
 		}
 	}
@@ -90,12 +86,9 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		// ver se bateu em Hugo ou em um inimigo
-		//if (enemy) 
-		//	gameController.CallGameOver();
-		if (coll.collider.name == "Hugo") {
+		if (coll.collider.name == "Hugo")
 			gameObject.SetActive(false);
-		}
-			//gameController.StartFinalAnimation();
+		else
+			gameController.CallGameOver();
 	}
 }

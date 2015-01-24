@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(score == 5)
+		if(score == 3)
 			StartWin();
 
 
@@ -90,24 +90,24 @@ public class GameController : MonoBehaviour {
 	
 	public void CallGameOver() {
 		currentState = GameState.GAMEOVER;
+		// show the die message and restart the level
+		Application.LoadLevel(Application.loadedLevel);
 	}
 
 	public void StartWin() {
 		currentState = GameState.WINSTATE;
 		hugo.Activate();
-		InactiveAllEnemies();
+		InactiveInvisibleEnemies();
 	}
 
 	public void StartFinalAnimation() {
 		currentState = GameState.FINALIALANIMATION;
-		// stop the backbround movement
-		// inactive the player
-		// trigger the Hugo animation
 	}
 	
-	public void InactiveAllEnemies() {
+	public void InactiveInvisibleEnemies() {
 		foreach(GameObject enemy in enemies) {
-			enemy.SetActive(false);
+			if (!enemy.renderer.isVisible)
+				enemy.SetActive(false);
 		}
 	}
 

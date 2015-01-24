@@ -25,7 +25,7 @@ public class AliceBehaviour : MonoBehaviour {
 		}
 
 		// Move the animation for the letf, out of the scene
-		if (gameController.IsInGame())
+		if (renderer.isVisible && gameController.IsInGame())
 			transform.Translate(speed * direction * Time.deltaTime);
 	}
 

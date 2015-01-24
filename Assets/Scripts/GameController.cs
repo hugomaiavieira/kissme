@@ -35,7 +35,6 @@ public class GameController : MonoBehaviour {
 		if(score == 3)
 			StartWin();
 
-
 		switch(currentState) {
 
 			case GameState.WAITGAME: {
@@ -91,7 +90,20 @@ public class GameController : MonoBehaviour {
 	public void CallGameOver() {
 		currentState = GameState.GAMEOVER;
 		// show the die message and restart the level
+
+		StartCoroutine(ResetLevel());
+	}
+
+	IEnumerator ResetLevel() {
+		float fadeTime = GetComponent<Fading>().BeginFade(1);
+		yield return new WaitForSeconds(fadeTime);
 		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public IEnumerator Fade() {
+		float fadeTime = GetComponent<Fading>().BeginFade(1);
+		yield return new WaitForSeconds(fadeTime);
+		GetComponent<Fading>().BeginFade(-1);
 	}
 
 	public void StartWin() {

@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AliceBehaviour.cs" />
      <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Fading.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HugoBehaviour.cs" />
      <Compile Include="Assets\Scripts\MoveOffset.cs" />

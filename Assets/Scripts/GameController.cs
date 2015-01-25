@@ -8,6 +8,7 @@ public enum GameState {
 	INITIALANIMATION,
 	WINSTATE,
 	FINALIALANIMATION,
+	FINISHLEVEL,
 	GAMEOVER
 }
 
@@ -28,11 +29,17 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		if(score == 8) StartWin();
+		if(score == 1) StartWin();
 
+		Debug.Log(currentState);
 		switch(currentState) {
 			case GameState.WAITGAME: {
 				if(TouchEvent()) currentState = GameState.INITIALANIMATION;
+			}
+			break;
+
+			case GameState.FINISHLEVEL: {
+				if(TouchEvent()) StartCoroutine(LoadNextLevel());
 			}
 			break;
 		}
@@ -75,6 +82,12 @@ public class GameController : MonoBehaviour {
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
+	IEnumerator LoadNextLevel() {
+		float fadeTime = GetComponent<Fading>().BeginFade(1);
+		yield return new WaitForSeconds(fadeTime);
+		Application.LoadLevel(Application.loadedLevel + 1);
+	}
+
 	public IEnumerator Fade() {
 		float fadeTime = GetComponent<Fading>().BeginFade(1);
 		yield return new WaitForSeconds(fadeTime);
@@ -92,6 +105,7 @@ public class GameController : MonoBehaviour {
 
 
 		StartCoroutine(FadeImages());
+		currentState = GameState.FINISHLEVEL;
 	}
 
 	public IEnumerator FadeImages() {

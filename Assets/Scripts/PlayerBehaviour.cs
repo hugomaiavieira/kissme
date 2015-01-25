@@ -25,10 +25,9 @@ public class PlayerBehaviour : MonoBehaviour {
 		moveToStartPosition();
 
 		if(gameController.TouchEvent()) {
-			Debug.Log(gameController.currentState);
-			if (gameController.IsInGame())
+			if (gameController.IsInGame()) 
 				Fly();
-			else if(gameController.IsWinState())
+			else if(gameController.IsWinState()) 
 				FlyToHugo();
 		}
 	}
@@ -81,9 +80,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 
 	private void DieWhenFall() {
-		if (transform.position.y < -5.35f) {
-			gameController.CallGameOver();
-		} 
+		if (transform.position.y < -5.35f) gameController.CallGameOver();
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {

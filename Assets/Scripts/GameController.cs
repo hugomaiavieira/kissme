@@ -19,47 +19,20 @@ public class GameController : MonoBehaviour {
 	public List<GameObject> enemies;
 
 	int        score;
-	//GameObject animationCamera;
-	//GameObject dynamicCamera;
-	public GameState  currentState = GameState.WAITGAME;
-	
-	// Use this for initialization
-	void Start () {
-		score           = 0;
-		//animationCamera = GameObject.FindWithTag("AnimationCamera");
-		//dynamicCamera   = GameObject.FindWithTag("DynamicCamera");
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	GameState  currentState = GameState.WAITGAME;
 
-		if(score == 1)
-			StartWin();
+	void Start () {
+		score = 0;
+	}
+
+	void Update () {
+		if(score == 1) StartWin();
 
 		switch(currentState) {
-
 			case GameState.WAITGAME: {
-				if(TouchEvent())
-					currentState = GameState.INITIALANIMATION;
+				if(TouchEvent()) currentState = GameState.INITIALANIMATION;
 			}
 			break;
-
-			case GameState.INITIALANIMATION: {
-			}
-			break;
-
-			case GameState.FINALIALANIMATION: {
-			}
-			break;
-
-			case GameState.INGAME: {
-			}
-			break;
-
-			case GameState.GAMEOVER: {
-			}
-			break;
-
 		}
 	}
 	
@@ -90,8 +63,6 @@ public class GameController : MonoBehaviour {
 	
 	public void CallGameOver() {
 		currentState = GameState.GAMEOVER;
-		// show the die message and restart the level
-
 		StartCoroutine(ResetLevel());
 	}
 
@@ -117,14 +88,14 @@ public class GameController : MonoBehaviour {
 		currentState = GameState.FINALIALANIMATION;
 
 		Fading fading = GetComponent<Fading>();
+
 		fading.fadeOutTexture = finalImage;
-		float fadeTime = fading.BeginFade(1);
+		fading.BeginFade(1);
 	}
 	
 	public void InactiveInvisibleEnemies() {
 		foreach(GameObject enemy in enemies) {
-			if (!enemy.renderer.isVisible)
-				enemy.SetActive(false);
+			if (!enemy.renderer.isVisible) enemy.SetActive(false);
 		}
 	}
 

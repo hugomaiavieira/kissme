@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: 21b1d1279cfc8cb4c949845e2b517db8
+guid: deaa0fc3de4c6e94cb544cb7168798a8
 TextureImporter:
   fileIDToRecycleName:
-    21300000: f2-alice-grid_0
-    21300002: f2-alice-grid_1
-    21300004: f2-alice-grid_2
-    21300006: f2-alice-grid_5
-    21300008: f2-alice-grid_4
-    21300010: f2-alice-grid_5
-    21300012: f2-alice-grid_6
-    21300014: f2-alice-grid_7
-    21300016: f2-alice-grid_7
+    21300000: f2-hugo-grid_0
+    21300002: f2-hugo-grid_1
+    21300004: f2-hugo-grid_2
+    21300006: f2-hugo-grid_3
+    21300008: f2-hugo-grid_4
+    21300010: f2-hugo-grid_5
+    21300012: f2-hugo-grid_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -52,84 +50,74 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: f2-alice-grid_0
+    - name: f2-hugo-grid_0
       rect:
         serializedVersion: 2
-        x: 109
+        x: 0
         y: 0
-        width: 310
-        height: 734
-      alignment: 6
+        width: 395
+        height: 756
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: f2-alice-grid_1
+    - name: f2-hugo-grid_1
       rect:
         serializedVersion: 2
-        x: 477
+        x: 395
         y: 0
-        width: 309
-        height: 734
-      alignment: 6
+        width: 395
+        height: 756
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: f2-alice-grid_2
+    - name: f2-hugo-grid_2
       rect:
         serializedVersion: 2
-        x: 832
+        x: 790
         y: 0
-        width: 314
-        height: 734
-      alignment: 6
+        width: 395
+        height: 756
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: f2-alice-grid_7
+    - name: f2-hugo-grid_3
       rect:
         serializedVersion: 2
-        x: 2470
+        x: 1185
         y: 0
-        width: 536
-        height: 734
-      alignment: 6
+        width: 395
+        height: 756
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: f2-alice-grid_4
+    - name: f2-hugo-grid_4
       rect:
         serializedVersion: 2
-        x: 1222
+        x: 1580
         y: 0
-        width: 595
-        height: 734
-      alignment: 6
+        width: 395
+        height: 756
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: f2-alice-grid_5
+    - name: f2-hugo-grid_5
       rect:
         serializedVersion: 2
-        x: 1850
+        x: 1975
         y: 0
-        width: 589
-        height: 734
-      alignment: 6
+        width: 395
+        height: 756
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: f2-alice-grid_6
+    - name: f2-hugo-grid_6
       rect:
         serializedVersion: 2
-        x: 3038
+        x: 2370
         y: 0
-        width: 478
-        height: 734
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: f2-alice-grid_7
-      rect:
-        serializedVersion: 2
-        x: 3547
-        y: 0
-        width: 479
-        height: 734
-      alignment: 6
+        width: 395
+        height: 756
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 

@@ -21,7 +21,7 @@ public class HugoBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {		
 		// Move the animation for the letf, put it in the scene
-		if (gameController.IsWinState() && transform.position.x > 1.8 )
+		if (gameController.IsWinState() && transform.position.x > 1.7 )
 			transform.Translate(speed * direction * Time.deltaTime);
 	}
 	

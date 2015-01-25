@@ -55,6 +55,7 @@ public class PlayerBehaviour : MonoBehaviour {
 		rigidbody2D.velocity = Vector2.zero;
 		
 		animator.SetTrigger("MakeFly");
+		SoundController.PlaySound(gameSounds.wing);
 		rigidbody2D.AddForce(new Vector2(0, 1) * flyForce);
 	}
 

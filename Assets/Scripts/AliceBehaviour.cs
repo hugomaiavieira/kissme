@@ -33,4 +33,12 @@ public class AliceBehaviour : MonoBehaviour {
 	public void AfterFinishAnimation() {
 		gameController.StartGame();
 	}
+
+	public void PlayKissSound() {
+		SoundController.PlaySound(gameSounds.kiss);
+	}
+
+	public void PlayPopSound() {
+		SoundController.PlaySound(gameSounds.pop);
+	}
 }

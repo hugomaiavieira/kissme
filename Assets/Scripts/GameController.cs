@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		if(score == 1) StartWin();
+		if(score == 8) StartWin();
 
 		switch(currentState) {
 			case GameState.WAITGAME: {

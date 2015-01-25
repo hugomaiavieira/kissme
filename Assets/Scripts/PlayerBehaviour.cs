@@ -85,7 +85,6 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		Debug.Log(coll.collider.tag);
 		if (coll.collider.tag == "Hugo")
 			gameObject.SetActive(false);
 		else

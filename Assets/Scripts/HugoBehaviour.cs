@@ -7,7 +7,7 @@ public class HugoBehaviour : MonoBehaviour {
 	Animator       animator;
 	
 	Vector3 	   direction   = new Vector3(-1, 0 , 0);
-	float          speed	   = 1.23f; // must be the same as the backgound
+	float          speed	   = 0.8f; // must be the same as the backgound
 	bool 		   animStarted = false;
 
 	// Use this for initialization
@@ -23,6 +23,8 @@ public class HugoBehaviour : MonoBehaviour {
 		// Move the animation for the letf, put it in the scene
 		if (gameController.IsWinState() && transform.position.x > 1.7 )
 			transform.Translate(speed * direction * Time.deltaTime);
+		else if (gameController.IsWinState() && transform.position.x <= 1.7)
+			gameController.isStatic = true;
 	}
 	
 	void OnCollisionEnter2D(Collision2D coll) {

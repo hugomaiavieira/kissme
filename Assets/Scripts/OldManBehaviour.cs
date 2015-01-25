@@ -15,7 +15,7 @@ public class OldManBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameController.IsInGame())
+		if (!gameController.isStatic)
 			transform.Translate(speed * direction * Time.deltaTime);
 	}
 }

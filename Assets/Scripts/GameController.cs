@@ -15,14 +15,16 @@ public class GameController : MonoBehaviour {
 	
 	public PlayerBehaviour  player;
 	public HugoBehaviour	hugo;
-	public Texture2D		finalImage;
 	public List<GameObject> enemies;
+	public List<Texture2D> 	finalImages;
+	public bool 			isStatic = true;
 
 	int        score;
 	GameState  currentState = GameState.WAITGAME;
 
 	void Start () {
 		score = 0;
+		isStatic = true;
 	}
 
 	void Update () {
@@ -39,6 +41,7 @@ public class GameController : MonoBehaviour {
 	public void StartGame() {
 		currentState = GameState.INGAME;
 		player.Wakeup();
+		isStatic = false;
 	}
 	
 	public bool IsInGame() {
@@ -87,10 +90,23 @@ public class GameController : MonoBehaviour {
 	public void StartFinalAnimation() {
 		currentState = GameState.FINALIALANIMATION;
 
-		Fading fading = GetComponent<Fading>();
 
-		fading.fadeOutTexture = finalImage;
-		fading.BeginFade(1);
+		StartCoroutine(FadeImages());
+	}
+
+	public IEnumerator FadeImages() {
+		for (int i=0; i < finalImages.Count; i++) {
+			Texture2D image = finalImages[i];
+
+			Fading fading = GetComponent<Fading>();
+			fading.fadeSpeed = 4f;
+			
+			fading.fadeOutTexture = image;
+			float time = fading.BeginFade(1);
+			yield return new WaitForSeconds(time);
+			fading.fadeSpeed = 0.01f;
+			fading.BeginFade(-1);
+		}
 	}
 	
 	public void InactiveInvisibleEnemies() {

@@ -16,7 +16,7 @@ public class MoveOffset : MonoBehaviour {
 
 
 	void Update () {
-		if (gameController.IsInGame()) {
+		if (!gameController.isStatic) {
 			offset += 0.001f;
 			
 			currentMaterial.SetTextureOffset("_MainTex", new Vector2(offset*speed, 0));

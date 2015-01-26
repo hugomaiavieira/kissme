@@ -1,13 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SoundController.cs">
     <Files>
-      <File FileName="Assets\Scripts\SoundController.cs" Line="17" Column="28" />
-      <File FileName="Assets\Scripts\AliceBehaviour.cs" Line="42" Column="3" />
-      <File FileName="Assets\Scripts\PlayerBehaviour.cs" Line="88" Column="18" />
-      <File FileName="Assets\Scripts\HugoBehaviour.cs" Line="29" Column="9" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="83" Column="19" />
+      <File FileName="Assets\Scripts\SoundController.cs" Line="53" Column="54" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="33" Column="1" />
       <File FileName="Assets\Scripts\SpawnController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MoveOffset.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\OldManBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AliceBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HugoBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerBehaviour.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

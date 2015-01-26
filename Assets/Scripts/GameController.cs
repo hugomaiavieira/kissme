@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		if(score == 1) StartWin();
+		if(score == 8) StartWin();
 
 		Debug.Log(currentState);
 		switch(currentState) {

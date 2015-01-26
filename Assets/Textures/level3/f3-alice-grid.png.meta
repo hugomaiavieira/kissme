@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 389a8e9b64ddb5d459952219f1a37c6f
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: f3-alice-grid_0
+    21300002: f3-alice-grid_1
+    21300004: f3-alice-grid_2
+    21300006: f3-alice-grid_3
+    21300008: f3-alice-grid_4
+    21300010: f3-alice-grid_5
+    21300012: f3-alice-grid_6
+    21300014: f3-alice-grid_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: f3-alice-grid_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 314
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f3-alice-grid_1
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 0
+        width: 317
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f3-alice-grid_2
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 0
+        width: 328
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f3-alice-grid_3
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 0
+        width: 578
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f3-alice-grid_4
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 0
+        width: 594
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f3-alice-grid_5
+      rect:
+        serializedVersion: 2
+        x: 2260
+        y: 0
+        width: 518
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f3-alice-grid_6
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 446
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f3-alice-grid_7
+      rect:
+        serializedVersion: 2
+        x: 3271
+        y: 0
+        width: 464
+        height: 734
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

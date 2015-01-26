@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		if(score == 8) StartWin();
 
-		Debug.Log(currentState);
 		switch(currentState) {
 			case GameState.WAITGAME: {
 				if(TouchEvent()) currentState = GameState.INITIALANIMATION;

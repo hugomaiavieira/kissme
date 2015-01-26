@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	Animator       	animator;
 	GameController 	gameController;
 	bool 		   	isAwake   		= false;
+	bool 		   	hited   		= false;
 	Vector3 	   	direction		= new Vector3(-1, 0 , 0);
 	float          	backSpeed 		= 0.7f;
 	float          	goToHugoSpeed	= 0.03f;
@@ -87,7 +88,12 @@ public class PlayerBehaviour : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.collider.tag == "Hugo")
 			gameObject.SetActive(false);
-		else
-			gameController.CallGameOver();
+		else {
+			if (!hited) {
+				SoundController.PlaySound(gameSounds.hit);
+				gameController.CallGameOver();
+				hited = true;
+			}
+		}
 	}
 }

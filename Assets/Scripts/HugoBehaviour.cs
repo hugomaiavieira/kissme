@@ -43,4 +43,8 @@ public class HugoBehaviour : MonoBehaviour {
 	public void AfterFinishAnimation() {
 		gameController.StartFinalAnimation();
 	}
+
+	public void PlayHeartSound() {
+		SoundController.PlaySound(gameSounds.heart);
+	}
 }

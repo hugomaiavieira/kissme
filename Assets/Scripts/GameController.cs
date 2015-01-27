@@ -103,11 +103,11 @@ public class GameController : MonoBehaviour {
 		currentState = GameState.FINALIALANIMATION;
 
 
-		StartCoroutine(ShowIlustrationSequence());
+		StartCoroutine(FadeImages());
 		currentState = GameState.FINISHLEVEL;
 	}
 
-	public IEnumerator ShowIlustrationSequence() {
+	public IEnumerator FadeImages() {
 		Fading fading = GetComponent<Fading>();
 		float interval = 4f;
 		

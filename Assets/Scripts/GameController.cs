@@ -29,7 +29,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		if(score == 8) StartWin();
+		if(score == 8) {
+			score++; // add one more score to not enter here anymore
+			StartWin();
+		}
 
 		switch(currentState) {
 			case GameState.WAITGAME: {
@@ -112,12 +115,14 @@ public class GameController : MonoBehaviour {
 		float interval = 4f;
 		
 		for (int i=0; i < finalImages.Count; i++) {
+			Debug.Log("parou aqui");
 			fading.BeginFade(1);
 			yield return new WaitForSeconds(fading.fadeSpeed);
 			finalImages[i].SetActive(true);
 			fading.BeginFade(-1);
-			
-			yield return new WaitForSeconds(interval);
+
+			if (i != finalImages.Count - 1) // do not add the interval for the last image
+				yield return new WaitForSeconds(interval);
 		}
 	}
 	

@@ -54,9 +54,9 @@ TextureImporter:
     - name: f1-alice-grid_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 7
         y: 0
-        width: 625
+        width: 315
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -64,9 +64,9 @@ TextureImporter:
     - name: f1-alice-grid_1
       rect:
         serializedVersion: 2
-        x: 625
+        x: 336
         y: 0
-        width: 625
+        width: 315
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -74,9 +74,9 @@ TextureImporter:
     - name: f1-alice-grid_2
       rect:
         serializedVersion: 2
-        x: 1250
+        x: 665
         y: 0
-        width: 625
+        width: 330
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -84,9 +84,9 @@ TextureImporter:
     - name: f1-alice-grid_3
       rect:
         serializedVersion: 2
-        x: 1875
+        x: 1023
         y: 0
-        width: 625
+        width: 586
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -94,9 +94,9 @@ TextureImporter:
     - name: f1-alice-grid_4
       rect:
         serializedVersion: 2
-        x: 2500
+        x: 1629
         y: 0
-        width: 625
+        width: 591
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -104,9 +104,9 @@ TextureImporter:
     - name: f1-alice-grid_5
       rect:
         serializedVersion: 2
-        x: 3125
+        x: 2248
         y: 0
-        width: 625
+        width: 536
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -114,9 +114,9 @@ TextureImporter:
     - name: f1-alice-grid_6
       rect:
         serializedVersion: 2
-        x: 3750
+        x: 2812
         y: 0
-        width: 625
+        width: 478
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -124,9 +124,9 @@ TextureImporter:
     - name: f1-alice-grid_7
       rect:
         serializedVersion: 2
-        x: 4375
+        x: 3322
         y: 0
-        width: 625
+        width: 473
         height: 734
       alignment: 6
       pivot: {x: 0, y: 0}

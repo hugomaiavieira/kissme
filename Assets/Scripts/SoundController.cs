@@ -8,7 +8,9 @@ public enum gameSounds {
 	pop,
 	heart,
 	wing,
-	airplane
+	airplane,
+	receiveKiss,
+	yay
 }
 
 public class SoundController : MonoBehaviour {
@@ -20,6 +22,8 @@ public class SoundController : MonoBehaviour {
 	public AudioClip soundHeart;
 	public AudioClip soundWing;
 	public AudioClip soundAirplane;
+	public AudioClip soundReceiveKiss;
+	public AudioClip soundYay;
 	
 	public static SoundController instance;
 	
@@ -51,6 +55,12 @@ public class SoundController : MonoBehaviour {
 			} break;
 			case gameSounds.airplane: {
 				instance.audio.PlayOneShot(instance.soundAirplane);
+			} break;
+			case gameSounds.receiveKiss: {
+				instance.audio.PlayOneShot(instance.soundReceiveKiss);
+			} break;
+			case gameSounds.yay: {
+				instance.audio.PlayOneShot(instance.soundYay);
 			} break;
 		}
 	}

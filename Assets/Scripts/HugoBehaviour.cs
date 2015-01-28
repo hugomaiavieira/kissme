@@ -45,6 +45,11 @@ public class HugoBehaviour : MonoBehaviour {
 	}
 
 	public void PlayHeartSound() {
+		SoundController.PlaySound(gameSounds.receiveKiss);
 		SoundController.PlaySound(gameSounds.heart);
+	}
+
+	public void PlayYaySound() {
+		SoundController.PlaySound(gameSounds.yay);
 	}
 }

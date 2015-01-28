@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		if(score == 8) {
+		if(score == 7) {
 			score++; // add one more score to not enter here anymore
 			StartWin();
 		}

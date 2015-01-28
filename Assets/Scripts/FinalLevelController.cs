@@ -11,6 +11,7 @@ public enum FinalLevelGameState {
 
 public class FinalLevelController : MonoBehaviour {
 
+	public GameObject			initialImage;
 	public List<GameObject>		finalImages;
 	public AirplaneBehaviour	airplane;
 	public GameObject			finishImage;
@@ -20,27 +21,33 @@ public class FinalLevelController : MonoBehaviour {
 	FinalLevelGameState  currentState = FinalLevelGameState.WAITGAME;
 
 	void Start () {
-
+		StartCoroutine(DelayedStart());
 	}
 	
 	void Update () {
 		Debug.Log(currentState);
 
 		switch(currentState) {
-			case FinalLevelGameState.WAITGAME: {
-				if(TouchEvent()) {
-					currentState = FinalLevelGameState.INITIALANIMATION;
-					Animator animator = airplane.GetComponent<Animator>();
-					animator.SetTrigger("Takeoff");
-				}
-			}
-			break;
 			case FinalLevelGameState.FINISH: {
 				if(TouchEvent())
 					finishImage.SetActive(true);
 			}
 			break;
 		}
+	}
+
+	public IEnumerator DelayedStart() {
+		yield return new WaitForSeconds(4f);
+
+		Fading fading = GetComponent<Fading>();
+		fading.BeginFade(1);
+		yield return new WaitForSeconds(fading.fadeSpeed);
+		initialImage.SetActive(false);
+		fading.BeginFade(-1);
+
+		currentState = FinalLevelGameState.INITIALANIMATION;
+		Animator animator = airplane.GetComponent<Animator>();
+		animator.SetTrigger("Takeoff");
 	}
 
 	public void StartIlustrationSequence() {

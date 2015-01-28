@@ -25,8 +25,6 @@ public class FinalLevelController : MonoBehaviour {
 	}
 	
 	void Update () {
-		Debug.Log(currentState);
-
 		switch(currentState) {
 			case FinalLevelGameState.FINISH: {
 				if(TouchEvent())
@@ -70,11 +68,7 @@ public class FinalLevelController : MonoBehaviour {
 			fading.BeginFade(-1);
 			
 			yield return new WaitForSeconds(interval);
-
-			if(i == finalImages.Count - 1) {
-				Debug.Log("entrou");
-				currentState = FinalLevelGameState.FINISH;
-			}
+			if(isLastImage) currentState = FinalLevelGameState.FINISH;
 		}
 	}
 	

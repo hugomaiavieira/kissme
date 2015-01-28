@@ -1,11 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FinalLevelController.cs">
     <Files>
       <File FileName="Assets\Scripts\SoundController.cs" Line="53" Column="54" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="21" Column="33" />
-      <File FileName="Assets\Scripts\FinalLevelController.cs" Line="46" Column="2" />
-      <File FileName="Assets\Scripts\Fading.cs" Line="1" Column="35" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="134" Column="4" />
+      <File FileName="Assets\Scripts\FinalLevelController.cs" Line="24" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

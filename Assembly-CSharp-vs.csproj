@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\Fading.cs" />
      <Compile Include="Assets\Scripts\FinalLevelController.cs" />
+     <Compile Include="Assets\Scripts\FotosLevelController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HugoBehaviour.cs" />
      <Compile Include="Assets\Scripts\InitialLevelController.cs" />

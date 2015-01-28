@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\FinalLevelController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HugoBehaviour.cs" />
+     <Compile Include="Assets\Scripts\InitialLevelController.cs" />
      <Compile Include="Assets\Scripts\MoveOffset.cs" />
      <Compile Include="Assets\Scripts\OldManBehaviour.cs" />
      <Compile Include="Assets\Scripts\PlayerBehaviour.cs" />

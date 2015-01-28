@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public enum GameState {
 	WAITGAME,
+	INITIALSTORY,
 	INGAME,
 	INITIALANIMATION,
 	WINSTATE,
@@ -17,15 +18,17 @@ public class GameController : MonoBehaviour {
 	public PlayerBehaviour  player;
 	public HugoBehaviour	hugo;
 	public List<GameObject> enemies;
+	public List<GameObject> initialImages;
 	public List<GameObject> finalImages;
 	public bool 			isStatic = true;
 
 	int        score;
-	GameState  currentState = GameState.WAITGAME;
+	GameState  currentState = GameState.INITIALSTORY;
 
 	void Start () {
 		score = 0;
 		isStatic = true;
+		StartCoroutine(PlayInitialStory());
 	}
 
 	void Update () {
@@ -106,22 +109,46 @@ public class GameController : MonoBehaviour {
 		currentState = GameState.FINALIALANIMATION;
 
 
-		StartCoroutine(FadeImages());
+		StartCoroutine(FadeImages(finalImages));
 		currentState = GameState.FINISHLEVEL;
 	}
 
-	public IEnumerator FadeImages() {
+	IEnumerator PlayInitialStory() {
+		yield return new WaitForSeconds(5f);
+		StartCoroutine(FadeInitialImages(initialImages));
+
+		currentState = GameState.WAITGAME;
+	}
+
+	public IEnumerator FadeInitialImages(List<GameObject> images) {
+		Fading fading = GetComponent<Fading>();
+		float interval = 5f;
+		
+		for (int i=0; i < images.Count; i++) {
+			fading.BeginFade(1);
+			yield return new WaitForSeconds(fading.fadeSpeed);
+			images[i].SetActive(true);
+			fading.BeginFade(-1);
+			images[i].SetActive(false);
+			yield return new WaitForSeconds(fading.fadeSpeed);
+
+			if (i != images.Count - 1) // do not add the interval for the last image
+				yield return new WaitForSeconds(interval);
+		}
+	}
+
+
+	public IEnumerator FadeImages(List<GameObject> images) {
 		Fading fading = GetComponent<Fading>();
 		float interval = 4f;
 		
-		for (int i=0; i < finalImages.Count; i++) {
-			Debug.Log("parou aqui");
+		for (int i=0; i < images.Count; i++) {
 			fading.BeginFade(1);
 			yield return new WaitForSeconds(fading.fadeSpeed);
-			finalImages[i].SetActive(true);
+			images[i].SetActive(true);
 			fading.BeginFade(-1);
 
-			if (i != finalImages.Count - 1) // do not add the interval for the last image
+			if (i != images.Count - 1) // do not add the interval for the last image
 				yield return new WaitForSeconds(interval);
 		}
 	}

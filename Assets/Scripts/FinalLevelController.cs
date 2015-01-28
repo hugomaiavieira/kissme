@@ -13,6 +13,7 @@ public class FinalLevelController : MonoBehaviour {
 
 	public List<GameObject>		finalImages;
 	public AirplaneBehaviour	airplane;
+	public GameObject			finishImage;
 
 	Animator       	animator;
 
@@ -34,6 +35,11 @@ public class FinalLevelController : MonoBehaviour {
 				}
 			}
 			break;
+			case FinalLevelGameState.FINISH: {
+				if(TouchEvent())
+					finishImage.SetActive(true);
+			}
+			break;
 		}
 	}
 
@@ -48,12 +54,20 @@ public class FinalLevelController : MonoBehaviour {
 		float interval = 4f;
 
 		for (int i=0; i < finalImages.Count; i++) {
+			bool isLastImage = (i == finalImages.Count - 1);
+
 			fading.BeginFade(1);
 			yield return new WaitForSeconds(fading.fadeSpeed);
+			if (isLastImage) yield return new WaitForSeconds(3f);
 			finalImages[i].SetActive(true);
 			fading.BeginFade(-1);
 			
 			yield return new WaitForSeconds(interval);
+
+			if(i == finalImages.Count - 1) {
+				Debug.Log("entrou");
+				currentState = FinalLevelGameState.FINISH;
+			}
 		}
 	}
 	

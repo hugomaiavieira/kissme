@@ -110,7 +110,6 @@ public class GameController : MonoBehaviour {
 
 
 		StartCoroutine(FadeImages(finalImages));
-		currentState = GameState.FINISHLEVEL;
 	}
 
 	IEnumerator PlayInitialStory() {
@@ -150,6 +149,8 @@ public class GameController : MonoBehaviour {
 
 			if (i != images.Count - 1) // do not add the interval for the last image
 				yield return new WaitForSeconds(interval);
+			else
+				currentState = GameState.FINISHLEVEL;
 		}
 	}
 	
